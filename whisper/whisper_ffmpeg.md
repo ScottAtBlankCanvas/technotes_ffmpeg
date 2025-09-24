@@ -74,7 +74,7 @@ export DYLD_LIBRARY_PATH=/usr/local/lib:$DYLD_LIBRARY_PATH
 ffmpeg --help filter=whisper
 ```
 
-# Running
+## Running
 
 ffprobe.  Need to turn off gpu (use_gpu=0) and use a different file 
 ```nix
@@ -94,3 +94,18 @@ ffmpeg -i https://github.com/vpalmisano/webrtcperf/releases/download/videos-1.0/
 :destination=output.srt\
 :format=srt" -f null -
 ```
+
+```nix
+ffmpeg -loglevel warning -re -i https://livecmaftest1.akamaized.net/cmaf/live/2099281/abr6s/master.m3u8 \
+-vn -af 'whisper=model=../whisper.cpp/models/ggml-base.en.bin\
+:language=en\
+:queue=3\
+:use_gpu=0\
+:destination=-\
+:format=json' -f null -
+```
+
+## Next Steps
+
+1. Send in rtmp, pull out audio and do live trancribe
+2. 
