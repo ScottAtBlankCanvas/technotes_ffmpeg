@@ -8,5 +8,5 @@
 ## Notes
 
 * [whisper and ffmpeg]( whisper/whisper_ffmpeg.md)
-* [Randon notes I need to organize](misc/random_notes.md]
+* [Random notes I need to organize](misc/random_notes.md)
 
