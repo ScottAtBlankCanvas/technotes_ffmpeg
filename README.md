@@ -2,36 +2,47 @@
 
 # ffmpeg and whisper
 
-# Background
+## Background
 
-Found the whisper ffmpeg info via LinkedIn Post LI post: https://www.linkedin.com/posts/ericfontaine13_ffmpeg-openai-whisper-activity-7366499799753281537-yYNk
+Found the whisper ffmpeg info via [LinkedIn Post](https://www.linkedin.com/posts/ericfontaine13_ffmpeg-openai-whisper-activity-7366499799753281537-yYNk)
 
-The Medium Article that I followed to build: https://medium.com/@vpalmisano/run-whisper-audio-transcriptions-with-one-ffmpeg-command-c6ecda51901f
+I followed this [Medium Article](https://medium.com/@vpalmisano/run-whisper-audio-transcriptions-with-one-ffmpeg-command-c6ecda51901f)
 
-# Difficulties I had with Medium Build Steps
+Good article on [Mac Dynamic Library Loading](https://clarkkromenaker.com/post/library-dynamic-loading-mac/)
+
+## Difficulties I had with Medium Build Steps
 
 I was building on a MacBook Pro 2019: 2.6 GHz 6-Core Intel Core i7
 
-1. libpulse was not installed on my machine
-2. ffmpeg scripts attempt to modify /usr/ instead of /usr/local/ (Mac SiP prevents this)
-3. whisper lirary was not laoding with ffmpeg
+<b>Problem:</b> libpulse was not installed on my machine
+
+<b>Solution:</b> Just needed to install it
 
 
-Should find thgem in /usr/local/lib based on rpath setting (using otool) but had to force it via:
+<b>Problem:</b> ffmpeg scripts attempt to modify /usr/ instead of /usr/local/ (Mac SiP prevents this)
 
-export DYLD_LIBRARY_PATH=/usr/local/lib:$DYLD_LIBRARY_PATH
+<b>Solution:</b> Adjusted build to /usr/local.  See script notes below
 
-9. ffmpeg --help filter=whisper
 
-works!
+<b>Problem:</b> whisper library was not loading with ffmpeg
+
+<b>Solution:</b> setting DYLD_LIBRARY_PATH
+
+Used otool to verify Should find thgem in /usr/local/lib based on rpath setting (using otool) but had to force it via setting DYLD_LIBRARY_PATH.
+See script notes below
+
+
 
 ## Summary of Modified Build steps:
 
+### Build prerequisites
 ```nix
 # pulsa library was not found, so install it
 brew install pulseaudio
+```
 
-# Build whisper (no changes from Medium article)
+### Build whisper (no changes from Medium article)
+```nix
 cd ~/code
 git clone https://github.com/ggml-org/whisper.cpp
 cd whisper.cpp
@@ -39,8 +50,10 @@ sh ./models/download-ggml-model.sh base.en
 cmake -B build
 cmake --build build --config Release
 sudo make install -C build
+```
 
-# Build ffmpeg (changes denoted below)
+### Build ffmpeg (changes denoted below)
+```nix
 cd ~/code
 git clone https://code.ffmpeg.org/FFmpeg/FFmpeg.git
 # I renamed the ffmpeg directory bc I have several
