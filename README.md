@@ -1,13 +1,12 @@
 # technotes_ffmpeg
 
 
-# ffmpeg and whisper
-
 ## Background
 
-This is my collection of ffmpeg notes
+[Scott Kellicker's](https://www.linkedin.com/in/scottkellicker) collection of ffmpeg development notes
 
 ## Notes
 
 * [whisper and ffmpeg]( whisper/whisper_ffmpeg.md)
+* [Randon notes I need to organize](misc/random_notes.md]
 
