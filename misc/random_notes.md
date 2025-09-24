@@ -1,6 +1,6 @@
-# ffmpeg
+# Random ffmpeg notes to organize
 
-# Resources
+## Resources
 
 ### ffmpeg articles
 
@@ -54,15 +54,12 @@ make
 
 ```
 
-## Creating a foobar filter from edgedetct
+## Creating a foobar filter from edgedetect
 
 https://fossies.org/linux/ffmpeg/doc/writing_filters.txt
 
 Did similar to above except, built a filter for debugging avsf_debug from av_subtitles (burn in)
 
-### TODO:
-
-Can move filter to separate code base?  How will ffmpeg know about it?
 
 ### Docker and ffmpeg
 
