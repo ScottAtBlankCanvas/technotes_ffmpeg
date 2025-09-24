@@ -65,5 +65,21 @@ ffmpeg --help filter=whisper
 
 # Running
 
-ffprobe.  Need to turn off gpu and use a different file:
+ffprobe.  Need to turn off gpu (use_gpu=0) and use a different file 
+```nix
+ffprobe -select_streams a -print_format compact -show_frames \
+-show_entries 'frame_tags=lavfi.whisper.text,lavfi.whisper.duration' \
+-f lavfi \
+-i "amovie=katiesteve.wav,whisper=model=../whisper.cpp/models/ggml-base.en.bin:language=en:queue=3:use_gpu=0" \
+| grep whisper
+```
 
+```nix
+ffmpeg -i https://github.com/vpalmisano/webrtcperf/releases/download/videos-1.0/gvr.mp4 \
+-vn -af "whisper=model=../whisper.cpp/models/ggml-base.en.bin\
+:language=en\
+:queue=3\
+:use_gpu=0\
+:destination=output.srt\
+:format=srt" -f null -
+```
