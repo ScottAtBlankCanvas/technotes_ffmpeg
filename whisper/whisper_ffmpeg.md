@@ -4,7 +4,7 @@
 
 Found the whisper ffmpeg info via [LinkedIn Post](https://www.linkedin.com/posts/ericfontaine13_ffmpeg-openai-whisper-activity-7366499799753281537-yYNk)
 
-I followed this [Medium Article](https://medium.com/@vpalmisano/run-whisper-audio-transcriptions-with-one-ffmpeg-command-c6ecda51901f)
+I followed this [Medium Article](https://medium.com/@vpalmisano/run-whisper-audio-transcriptions-with-one-ffmpeg-command-c6ecda51901f) by [Vittorio Palmisano](https://www.linkedin.com/in/vpalmisano/)
 
 Good article on [Mac Dynamic Library Loading](https://clarkkromenaker.com/post/library-dynamic-loading-mac/)
 
@@ -29,7 +29,9 @@ I was building on a MacBook Pro 2019: 2.6 GHz 6-Core Intel Core i7
 Used otool to verify Should find thgem in /usr/local/lib based on rpath setting (using otool) but had to force it via setting DYLD_LIBRARY_PATH.
 See script notes below
 
+## Future Work
 
+* Running on Apple Silicon, should build whisper with [Core ML Support](https://github.com/ggml-org/whisper.cpp#core-ml-support)
 
 ## Summary of Modified Build steps:
 
