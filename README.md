@@ -7,8 +7,8 @@
 
 ## ffmpeg Notes
 
-* [whisper and ffmpeg]( whisper/whisper_ffmpeg.md)
-* [Random notes I need to organize](misc/random_notes.md)
+* [whisper and ffmpeg](ffmpeg/whisper_ffmpeg.md)
+* [Random notes I need to organize](ffmpeg/random_notes.md)
 
 ## Wowza Notes
 
